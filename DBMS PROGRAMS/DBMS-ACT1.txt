@@ -1,0 +1,86 @@
+Mini Data World: Library Management System
+
+1. Domain / Scenario Chosen: Library Management System for a college or school library
+
+2. Data Description: For this library system, some of the most important pieces of information we need to store are:
+
+A. Book ID
+B. Book Title
+C. Author Name
+D. Book Genre (like fiction, non-fiction, etc.)
+E. Year of Publication
+F. ISBN number
+G. Member Name
+H. Member Address
+I. Member Phone Number
+J. Staff ID (librarians and workers)
+K. Staff Name
+L. Staff Role (librarian, assistant, etc.)
+M. Date each book is issued
+N. Date each book is returned
+O. Any fine amount for late returns
+
+3. Types of Users: 
+
+A. Members/Students
+B. Library Staff
+C. Admins
+
+4. Challenges Faced in the Traditional Implementation of the System:
+
+A. Keeping records on paper is messy and easy to lose.
+B. Hard to track which books are overdue and calculate late fees.
+C. Time-consuming to search for all books by an author or check which member has a certain book.
+D. If records are damaged or lost, there’s no backup.
+
+5. How Does DBMS Help in Overcoming the Challenges Faced:
+
+A. Keeps all information safe and organized in one place, which is easy to search.
+B. Automatically tracks due dates and calculates fines, greatly reducing mistakes.
+C. Quick access to any data, like borrowing history or book availability.
+D. Protection against data loss with regular backups, and access can be restricted by user role.
+
+6. List the Tables Used in the System:
+
+A. BOOK (information about library books)
+B. MEMBER (details about members)
+C. STAFF (library workers and their roles)
+D. ISSUE (books issued out to members)
+E. RETURN (books returned and any fines involved)
+
+7. Schema for Each Table/Relation:
+
+Table Name - Attributes (Fields)
+A. BOOK	        Book_ID (Primary Key), Title, Author, Genre, Publication_Year, ISBN
+B. MEMBER	Member_ID (Primary Key), Name, Address, Phone_Number
+C. STAFF	Staff_ID (Primary Key), Name, Role
+
+
+8. Example for Table Creation in SQL:-
+
+A. BOOK:-
+CREATE TABLE BOOK (
+    Book_ID INT PRIMARY KEY,
+    Title VARCHAR(255),
+    Author VARCHAR(255),
+    Genre VARCHAR(50),
+    Publication_Year INT,
+    ISBN VARCHAR(20)
+);
+
+B. MEMBER:-
+CREATE TABLE MEMBER (
+    Member_ID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Address VARCHAR(255),
+    Phone_Number VARCHAR(20)
+);
+
+C. STAFF:-
+CREATE TABLE STAFF (
+    Staff_ID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Role VARCHAR(50)
+);
+
+

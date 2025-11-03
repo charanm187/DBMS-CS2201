@@ -1,0 +1,234 @@
+-- Lab Experiment 01: Implementation of DDL Commands in SQL
+-- STUDENT NAME: 
+-- USN: 
+-- SECTION: 
+
+SELECT USER(), 
+       @@hostname AS Host_Name, 
+       VERSION() AS MySQL_Version, 
+       NOW() AS Current_Date_Time;
+-- OUTPUT : [ COPYPASTE OF THE OUTPUT in CSV Format and terminate with ; ]
+ 
+ 
+ root@localhost	RVU-PC-026	8.4.6	2025-08-18 06:20:02;
+ 
+-- Scenario: University Course Management System
+-- CREATE AND LOAD THE database DBLab001
+-- Write your SQL query below Codespace:
+
+
+create database DBlab001;
+use DBlab001;
+
+
+
+-- Task 1: Create the Students Table
+-- Create a table to store information about students.
+-- Include the following columns:
+-- 1. StudentID (Primary Key)
+-- 2. FirstName
+-- 3. LastName
+-- 4. Email (Unique Constraint)
+-- 5. DateOfBirth
+
+-- Write your SQL query below Codespace:
+
+   create table students
+   (studentID varchar(10) primary key,
+   firstname varchar(10),
+   lastname varchar(10),
+   email varchar(20),
+   DOB date);
+DESC students;
+
+-- OUTPUT :
+studentID	varchar(10)	NO	PRI		
+firstname	varchar(10)	YES			
+lastname	varchar(10)	YES			
+email	varchar(20)	YES			
+DOB	date	YES			
+
+
+-- Alter the table and 2 new columns
+
+alter table students
+add gender varchar(10),
+add age int;
+desc students;
+
+-- Modify a column data type
+alter table students
+modify age float;
+desc students;
+
+-- Rename a column
+
+alter table goodboys
+change gender sex varchar(10);
+desc goodboys;
+
+
+-- Drop a column
+
+alter table goodboys
+drop column age; 
+desc goodboys;
+
+-- Rename the table
+alter table students 
+rename to goodboys;
+desc goodboys;
+
+----------------------------------------------------------------------------------------------------
+
+-- Task 2: Create the Courses Table
+-- Create a table to store information about courses.
+-- Include the following columns:
+-- - CourseID (Primary Key)
+-- - CourseName
+-- - Credits
+
+-- Write your SQL query below Codespace:
+
+   create table courses
+   (courseID varchar(10) primary key,
+   coursename varchar(10),
+   credits int);
+DESC courses; 
+
+-- OUTPUT :
+courseID	varchar(10)	NO	PRI		
+coursename	varchar(10)	YES			
+credits	int	YES			
+
+
+-- Alter the table and 2 new columns
+
+alter table courses
+add teacher varchar(10),
+add teacherID varchar(10);
+desc courses;
+
+
+-- Modify a column data type
+
+alter table courses
+modify teacherID int;
+desc courses;
+
+-- Rename a column
+
+alter table courses
+change courseID coursecode varchar(10);
+desc courses;
+
+
+-- Drop a column
+alter table courses
+drop column credits;
+desc courses;
+
+-- Rename the table
+
+alter table courses
+rename to SUBJECTS;
+desc SUBJECTS;
+
+-----------------------------------------------------------------------------------
+
+-- Task 3: Create the Enrollments Table
+-- Create a table to store course enrollment information.
+-- Include the following columns:
+-- - EnrollmentID (Primary Key)
+-- - StudentID (Foreign Key referencing Students table)
+-- - CourseID (Foreign Key referencing Courses table)
+-- - EnrollmentDate
+
+-- Write your SQL query below Codespace:
+
+ create table enrollments
+   (enrollmentID varchar(10) primary key,
+   studentID varchar(10),
+   courseID varchar(10),
+   enrolldate date);
+DESC enrollments;
+
+-- OUTPUT :
+
+enrollmentID	varchar(10)	NO	PRI		
+studentID	varchar(10)	YES			
+courseID	varchar(10)	YES			
+enrolldate	date	YES			
+
+-- Alter the table and 2 new columns
+
+alter table enrollments
+add teacher varchar(10),
+add teacherID varchar(10);
+desc enrollments;
+
+-- Modify a column data type
+alter table enrollments
+modify teacherID int;
+desc enrollments;
+
+-- Rename a column
+alter table enrollments
+change courseID coursecode varchar(10);
+desc enrollments;
+
+-- Drop a column
+
+alter table enrollments
+drop column teacherID;
+desc enrollments;
+
+-- Rename the table
+alter table enrollments
+rename to applications;
+desc applications;
+
+------------------------------------------------------------
+
+-- Task 4: Alter the Students Table
+-- Add a column 'PhoneNumber' to store student contact numbers.
+
+-- Write your SQL query below Codespace:
+
+alter table goodboys 
+add PhoneNumber VARCHAR(15);
+desc goodboys;
+
+-------------------------------------------------------------------------
+
+
+-- Task 5: Modify the Courses Table
+-- Change the data type of the 'Credits' column to DECIMAL.
+-- Write your SQL query below Codespace:
+
+alter table SUBJECTS
+modify credits DECIMAL(4,2);
+desc SUBJECTS;
+
+
+----------------------------------------------------------------------
+
+-- Task 6: Drop Tables
+
+SHOW TABLES; -- Before dropping the table
+show tables
+
+-- Drop the 'Courses' and 'Enrollments' tables from the database.
+-- Write your SQL query below Codespace:
+
+drop table SUBJECTS;
+drop table applications;
+
+
+
+SHOW TABLES; -- After dropping the table Enrollement and Course
+show tables
+
+
+-- End of Lab Experiment 01
+-- Upload the Completed worksheet in the google classroom with file name USN _ LabExperiment01
